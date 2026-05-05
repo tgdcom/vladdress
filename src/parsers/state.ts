@@ -8,6 +8,8 @@ interface GetStateInfoResult {
     trimmedString?: string;
 }
 
+type StateName = keyof typeof allStates
+
 export function getStateInfo(input: string): GetStateInfoResult {
     const result: GetStateInfoResult = {};
 
@@ -23,7 +25,7 @@ export function getStateInfo(input: string): GetStateInfoResult {
         // Next check if the state string ends in state name or abbeviation
         // (state abbreviation must be preceded by a space to ensure accuracy)
         const lowerInput = input.toLowerCase();
-        for (const state of Object.keys(allStates)) {
+        for (const state of Object.keys(allStates) as StateName[]) {
             if (lowerInput.endsWith(state)) {
                 result.stateName = toTitleCase(state);
                 result.stateAbbreviation = allStates[state];
