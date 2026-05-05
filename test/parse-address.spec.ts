@@ -819,5 +819,30 @@ describe('Address Parser (parseAddress)', function () {
             expect(result.zipCode).to.equal("00979");
             expect(result.zipCodePlusFour).to.equal("00979-1126");
         });
+
+        it('should parse a PR PO Box address', function () {
+            const result = addresser.parseAddress("PO BOX 3367, BAYAMON PR 00958");
+            expect(result.addressLine1).to.equal("PO BOX 3367");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.streetNumber).to.be.undefined;
+            expect(result.streetName).to.be.undefined;
+            expect(result.placeName).to.equal("Bayamon");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00958");
+        });
+
+        it('should parse a PR PO Box address with dots and ZIP+4', function () {
+            const result = addresser.parseAddress("P.O. BOX 3367, BAYAMON PR 00958-0001");
+            expect(result.addressLine1).to.equal("P.O. BOX 3367");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.streetNumber).to.be.undefined;
+            expect(result.streetName).to.be.undefined;
+            expect(result.placeName).to.equal("Bayamon");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00958");
+            expect(result.zipCodePlusFour).to.equal("00958-0001");
+        });
     });
 });

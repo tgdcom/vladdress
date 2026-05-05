@@ -5,6 +5,7 @@ import { getStateInfo } from './parsers/state';
 import { getLastElement } from './utils/array';
 import { parsePlaceName } from './parsers/city-state';
 import { matchesNoSuffix, parseNoSuffix } from './parsers/no-suffix';
+import { matchesPOBox, parsePOBox } from './parsers/po-box';
 import { getPrLine1Prefix, matchesPrStreet, parsePrStreet } from './parsers/pr/street-address';
 import { ParsedAddress } from './model/parsed-address';
 import { makeFormattedAddress, makeAddressId } from './parse-address-us';
@@ -159,7 +160,10 @@ export const parsePrAddress = function (address: string, options?: Options): Par
     let resultStreetSuffix: string | undefined;
     let resultAddressLine2: string | undefined;
 
-    if (matchesPrStreet(streetString)) {
+    if (matchesPOBox(streetString)) {
+        const res = parsePOBox(streetString);
+        resultAddressLine1 = res.line1;
+    } else if (matchesPrStreet(streetString)) {
         const res = parsePrStreet(streetString);
         resultAddressLine1 = res.line1;
         resultStreetNumber = res.streetNumber;
