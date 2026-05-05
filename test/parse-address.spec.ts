@@ -746,4 +746,172 @@ describe('Address Parser (parseAddress)', function () {
             expect(result.zipCodePlusFour).to.be.undefined;
         });
     });
+
+    describe('Puerto Rican Addresses', () => {
+        it('should parse a Puerto Rican Address: Apartment Building with Street Address', function () {
+            // pattern: Number, Street, and Apt. No., City, State, and ZIP+4
+            const result = addresser.parseAddress("1234 AVE ASHFORD APT 1A, SAN JUAN PR 00907-1021");
+            expect(result.streetNumber).to.equal("150");
+            expect(result.streetName).to.equal("A");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("URB Las Gladiolas");
+            expect(result.addressLine2).to.equal("150 Calle A");
+            expect(result.placeName).to.equal("Mayaguez");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00926");
+            expect(result.zipCodePlusFour).to.equal("00926-3232");
+        });
+        it('should parse a Puerto Rican Address: Condominium with Street Address', function () {
+            // pattern: Condominium Name, Number, Street, and Apt. No., City, State, and ZIP+4
+            const result = addresser.parseAddress("COND LAS AMAPOLAS, 1230 CALLE AMAPOLAS APT 103, CAROLINA PR 00979-1126");
+            expect(result.streetNumber).to.equal("150");
+            expect(result.streetName).to.equal("A");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("URB Las Gladiolas");
+            expect(result.addressLine2).to.equal("150 Calle A");
+            expect(result.placeName).to.equal("Mayaguez");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00926");
+            expect(result.zipCodePlusFour).to.equal("00926-3232");
+        });
+        it('should parse a Puerto Rican Address: Urbanization (Exception)', function () {
+            // pattern: Number and Urbanization, City, State, and ZIP+4
+            const result = addresser.parseAddress("1234 URB LOS OLMOS, PONCE PR 00731-1235");
+            expect(result.streetNumber).to.equal("24");
+            expect(result.streetName).to.equal("Martinez");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("24 Calle Martinez");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.placeName).to.equal("Mayaguez");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00969");
+            expect(result.zipCodePlusFour).to.be.undefined;
+        });
+        it('should parse a Puerto Rican Address: Three-line Address', function () {
+            // pattern: Urbanization, Street and Number, City, State, and ZIP+4
+            const result = addresser.parseAddress("URB LAS GLADIOLAS, 150 CALLE A, SAN JUAN PR 00926-0221");
+            expect(result.streetNumber).to.equal("24");
+            expect(result.streetName).to.equal("Martinez");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("24 Calle Martinez");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.placeName).to.equal("San Juan");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00969");
+            expect(result.zipCodePlusFour).to.be.undefined;
+        });
+        it('should parse a Puerto Rican Address: Two-line Address', function () {
+            // pattern: Number and Street, City, State, and ZIP+4
+            const result = addresser.parseAddress("1234 URB LOS OLMOS, PONCE PR 00731-1235");
+            expect(result.streetNumber).to.equal("24");
+            expect(result.streetName).to.equal("Martinez");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("24 Calle Martinez");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.placeName).to.equal("Mayaguez");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00969");
+            expect(result.zipCodePlusFour).to.be.undefined;
+        });
+        it('should parse a Puerto Rican Address: Two-line Address', function () {
+            // pattern: Number and Street, City, State, and ZIP+4
+            const result = addresser.parseAddress("1234 URB LOS OLMOS, PONCE PR 00731-1235");
+            expect(result.streetNumber).to.equal("24");
+            expect(result.streetName).to.equal("Martinez");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("24 Calle Martinez");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.placeName).to.equal("Mayaguez");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00969");
+            expect(result.zipCodePlusFour).to.be.undefined;
+        });
+        it('should parse a Puerto Rican Address: Two-line Address', function () {
+            // pattern: Number and Street, City, State, and ZIP+4
+            const result = addresser.parseAddress("1234 URB LOS OLMOS, PONCE PR 00731-1235");
+            expect(result.streetNumber).to.equal("24");
+            expect(result.streetName).to.equal("Martinez");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("24 Calle Martinez");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.placeName).to.equal("Mayaguez");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00969");
+            expect(result.zipCodePlusFour).to.be.undefined;
+        });
+        it('should parse a Puerto Rican Address: Two-line Address', function () {
+            // pattern: Number and Street, City, State, and ZIP+4
+            const result = addresser.parseAddress("1234 URB LOS OLMOS, PONCE PR 00731-1235");
+            expect(result.streetNumber).to.equal("24");
+            expect(result.streetName).to.equal("Martinez");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("24 Calle Martinez");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.placeName).to.equal("Mayaguez");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00969");
+            expect(result.zipCodePlusFour).to.be.undefined;
+        });
+        it('should parse a Puerto Rican Address: Two-line Address', function () {
+            // pattern: Number and Street, City, State, and ZIP+4
+            const result = addresser.parseAddress("1234 URB LOS OLMOS, PONCE PR 00731-1235");
+            expect(result.streetNumber).to.equal("24");
+            expect(result.streetName).to.equal("Martinez");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("24 Calle Martinez");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.placeName).to.equal("Mayaguez");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00969");
+            expect(result.zipCodePlusFour).to.be.undefined;
+        });
+        it('should parse a Puerto Rican Address: Two-line Address', function () {
+            // pattern: Number and Street, City, State, and ZIP+4
+            const result = addresser.parseAddress("1234 URB LOS OLMOS, PONCE PR 00731-1235");
+            expect(result.streetNumber).to.equal("24");
+            expect(result.streetName).to.equal("Martinez");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("24 Calle Martinez");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.placeName).to.equal("Mayaguez");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00969");
+            expect(result.zipCodePlusFour).to.be.undefined;
+        });
+        it('should parse a Puerto Rican Address: Two-line Address', function () {
+            // pattern: Number and Street, City, State, and ZIP+4
+            const result = addresser.parseAddress("1234 URB LOS OLMOS, PONCE PR 00731-1235");
+            expect(result.streetNumber).to.equal("24");
+            expect(result.streetName).to.equal("Martinez");
+            expect(result.streetSuffix).to.equal("Calle");
+            expect(result.streetDirection).to.be.undefined;
+            expect(result.addressLine1).to.equal("24 Calle Martinez");
+            expect(result.addressLine2).to.be.undefined;
+            expect(result.placeName).to.equal("Mayaguez");
+            expect(result.stateAbbreviation).to.equal("PR");
+            expect(result.stateName).to.equal("Puerto Rico");
+            expect(result.zipCode).to.equal("00969");
+            expect(result.zipCodePlusFour).to.be.undefined;
+        });
+    });
 });
