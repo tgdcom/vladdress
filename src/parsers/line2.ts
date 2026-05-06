@@ -45,7 +45,7 @@ type UsLine2Key = keyof typeof usLine2Prefixes;
 
 export function validateUsLine2Type(input: string): UsLine2Key | undefined {
     input = input.toUpperCase();
-    const found = usLine2Prefixes[input];
+    const found = usLine2Prefixes[input as UsLine2Key];
     if (found) {
         return input as UsLine2Key;
     }

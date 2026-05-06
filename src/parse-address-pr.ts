@@ -63,7 +63,8 @@ export const parsePrAddress = function (address: string, options?: Options): Par
         placeString = addressParts[addressParts.length - 1]?.trim();
     }
 
-    const placeNameResult = parsePlaceName(placeString, resultStateAbbreviation);
+    type StateAbbreviation = Parameters<typeof parsePlaceName>[1];
+    const placeNameResult = parsePlaceName(placeString, resultStateAbbreviation as StateAbbreviation);
     const resultPlaceName = placeNameResult.placeName;
 
     if (!resultPlaceName) {

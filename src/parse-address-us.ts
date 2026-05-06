@@ -72,7 +72,8 @@ export const parseUsAddress = function (address: string, options?: Options): Par
         placeString = addressParts[addressParts.length - 1]?.trim();
     }
 
-    const placeNameResult = parsePlaceName(placeString, resultStateAbbreviation);
+    type StateAbbreviation = Parameters<typeof parsePlaceName>[1];
+    const placeNameResult = parsePlaceName(placeString, resultStateAbbreviation as StateAbbreviation);
     const resultPlaceName = placeNameResult.placeName;
 
     if (!resultPlaceName) {
@@ -98,7 +99,7 @@ export const parseUsAddress = function (address: string, options?: Options): Par
         // check if the secondary data is first
         const line2Index = addressParts.findIndex((part) => {
             const firstWord = part.substring(0, part.indexOf(' '));
-            return !!usLine2Prefixes[firstWord];
+            return !!usLine2Prefixes[firstWord as keyof typeof usLine2Prefixes];
         });
 
         const part = addressParts.splice(line2Index, 1)[0];
