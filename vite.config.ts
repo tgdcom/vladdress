@@ -2,7 +2,7 @@ import { defineConfig } from "vite-plus";
 
 export default defineConfig({
   staged: {
-    "*": "vp check --fix",
+    "*.{ts,tsx,vue}": "vp check --fix",
   },
   lint: {
     plugins: ["oxc", "typescript", "unicorn"],
