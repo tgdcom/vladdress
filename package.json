@@ -1,6 +1,6 @@
 {
   "name": "vladdress",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Lightweight Street Address Parser Written in TypeScript",
   "keywords": [
     "address",
@@ -28,7 +28,7 @@
     "lint": "vp lint src/**/*.ts --fix",
     "prepublish": "pnpm run build",
     "build": "rimraf build && tsc",
-    "prepare": "vp config"
+    "prepare": "pnpm run build"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
@@ -37,7 +37,6 @@
     "@typescript-eslint/eslint-plugin": "^8.59.2",
     "@typescript-eslint/parser": "^8.59.2",
     "coveralls": "^3.1.1",
-    "istanbul": "^0.4.5",
     "rimraf": "^6.1.3",
     "typescript": "^6.0.3",
     "vite-plus": "latest",
