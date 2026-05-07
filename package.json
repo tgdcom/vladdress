@@ -27,8 +27,7 @@
     "start": "ts-node src/index.ts",
     "lint": "vp lint src/**/*.ts --fix",
     "prepublish": "pnpm run build",
-    "build": "rimraf build && tsc",
-    "prepare": "pnpm run build"
+    "build": "rimraf build && tsc"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
