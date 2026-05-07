@@ -1,6 +1,6 @@
 {
   "name": "vladdress",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Lightweight Street Address Parser Written in TypeScript",
   "keywords": [
     "address",
