@@ -4,7 +4,8 @@
         "rootDir": "src",
         "outDir": "build",
         "strictNullChecks": true,
-        "declaration": true
+        "declaration": true,
+        "types": ["node"]
     },
     "include": [
         "src"

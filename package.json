@@ -22,6 +22,9 @@
   ],
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "bin": {
+    "vladdress": "build/cli.js"
+  },
   "scripts": {
     "test": "vp test run",
     "start": "ts-node src/index.ts",
