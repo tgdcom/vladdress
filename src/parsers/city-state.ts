@@ -16,7 +16,8 @@ export const parsePlaceName = (
   const lowercasePlaceString = placeString?.toLowerCase();
 
   const foundCity = citiesForState.find((cityName) => {
-    return lowercasePlaceString?.endsWith(cityName.toLowerCase());
+    const lower = cityName.toLowerCase();
+    return lowercasePlaceString === lower || lowercasePlaceString?.endsWith(' ' + lower);
   });
 
   let resultPlaceName: string | undefined;
