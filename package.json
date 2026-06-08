@@ -1,6 +1,6 @@
 {
   "name": "vladdress",
-  "version": "1.2.3",
+  "version": "1.2.7",
   "description": "Lightweight Street Address Parser Written in TypeScript",
   "keywords": [
     "address",
@@ -17,14 +17,14 @@
     "type": "git",
     "url": "git+https://github.com/Christop406/vladdress.git"
   },
+  "bin": {
+    "vladdress": "build/cli.js"
+  },
   "files": [
     "build/**/*"
   ],
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "bin": {
-    "vladdress": "build/cli.js"
-  },
   "scripts": {
     "test": "vp test run",
     "start": "ts-node src/index.ts",
