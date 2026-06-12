@@ -31,6 +31,17 @@ describe("Address Parser (parseAddress)", function () {
       expect(result.zipCode).toBeUndefined();
       expect(result.zipCodePlusFour).toBeUndefined();
     });
+    it("should parse a street name containing a line2 keyword (e.g. 'Lower')", function () {
+      const result = parseAddress("5858 Lower Bay Rd, Bay Saint Louis, MS 39520");
+      expect(result.streetNumber).toBe("5858");
+      expect(result.streetName).toBe("Lower Bay");
+      expect(result.streetSuffix).toBe("Rd");
+      expect(result.addressLine1).toBe("5858 Lower Bay Rd");
+      expect(result.addressLine2).toBeUndefined();
+      expect(result.placeName).toBe("Bay Saint Louis");
+      expect(result.stateAbbreviation).toBe("MS");
+      expect(result.zipCode).toBe("39520");
+    });
     it("should parse a street address with double spaces", function () {
       const result = parseAddress("123 Main  St, Conway, SC");
       expect(result.streetNumber).toBe("123");
